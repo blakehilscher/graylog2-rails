@@ -5,3 +5,18 @@ default:
   facility: rails_application
   max_chunk_size: LAN
   level: 3
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+stage:
+  <<: *defaults
+
+demo:
+  <<: *defaults
