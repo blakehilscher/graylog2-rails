@@ -1,0 +1,30 @@
+default: &default
+  hostname: 127.0.0.1
+  port: 12201
+  max_chunk_size: LAN
+  level: 3
+
+production:
+  <<: *defaults
+  local_app_name: <%= @app_name %>_production
+  facility: <%= @app_name %>_production
+
+development:
+  <<: *defaults
+  local_app_name: <%= @app_name %>_development
+  facility: <%= @app_name %>_development
+
+test:
+  <<: *defaults
+  local_app_name: <%= @app_name %>_test
+  facility: <%= @app_name %>_test
+
+stage:
+  <<: *defaults
+  local_app_name: <%= @app_name %>_stage
+  facility: <%= @app_name %>_stage
+
+demo:
+  <<: *defaults
+  local_app_name: <%= @app_name %>_demo
+  facility: <%= @app_name %>_demo
