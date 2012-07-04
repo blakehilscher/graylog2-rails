@@ -12,7 +12,7 @@ module Graylog2Rails
                                  })
     end
 
-    def notify! args
+    def self.notify! args
       @notifier ||= new
       timestamp = Time.now.utc
       Rails.logger.tagged("GRAYLOG") do
