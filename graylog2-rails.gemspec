@@ -4,9 +4,9 @@ require File.expand_path('../lib/graylog2-rails/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Artem Melnikov"]
   gem.email         = ["artem.melnikov@ignar.name"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = "http://ignar.name"
+  gem.description   = %q{Wrapper for Graylog2 logging system}
+  gem.summary       = %q{Wrapper for Graylog2 logging system}
+  gem.homepage      = "https://github.com/ignar/graylog2-rails"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
