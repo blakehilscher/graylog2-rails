@@ -1,3 +1,4 @@
+require "gelf"
 require "graylog2-rails/initializers"
 require "graylog2-rails/message"
 require "graylog2-rails/middleware"

@@ -34,9 +34,9 @@ module Graylog2Rails
           :file => err.backtrace[0].split(":")[0],
           :line => err.backtrace[0].split(":")[1],
         }
-        Rails.logger.tagged("GRAYLOG") do
-          Rails.logger.info args.inspect
-        end
+
+        Rails.logger.info "[GRAYLOG] [#{timestamp.to_datetime}] #{args.inspect}"
+
         notifier = GELF::Notifier.new(@args.delete("hostname"), @args.delete("port"), @args.delete("max_chunk_size"))
         notifier.notify!(args)
       rescue => i_err
