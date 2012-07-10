@@ -37,8 +37,10 @@ module Graylog2Rails
 
         Rails.logger.info "[GRAYLOG] [#{timestamp.to_datetime}] #{args.inspect}"
 
-        notifier = GELF::Notifier.new(@args.delete("hostname"), @args.delete("port"), @args.delete("max_chunk_size"))
-        notifier.notify!(args)
+        unless Rails.env.development? || Rails.env.test?
+          notifier = GELF::Notifier.new(@args.delete("hostname"), @args.delete("port"), @args.delete("max_chunk_size"))
+          notifier.notify!(args)
+        end
       rescue => i_err
         puts "Graylog2 Exception logger. Could not send message: " + i_err.message
         puts i_err.backtrace.join("\n")
