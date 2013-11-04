@@ -1,10 +1,12 @@
-default:
+default: &defaults
   hostname: 127.0.0.1
   port: 12201
   local_app_name: rails_application
   facility: rails_application
   max_chunk_size: LAN
   level: 3
+  message_backtrace:  true
+  message_args:       true
 
 production:
   <<: *defaults

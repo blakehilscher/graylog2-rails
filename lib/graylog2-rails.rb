@@ -10,8 +10,8 @@ module Graylog2Rails
     # cached?
     return @@configuration if defined?(@@configuration)
     # read
-    custom_config_file = Rails.root.join("config", "graylog2_rails.yml")
-    if custom_config_file.exist?
+    custom_config_file = Rails.root.join("config", "graylog2_rails.yml") if Rails.root.present?
+    if custom_config_file && custom_config_file.exist?
       file_content = File.open(custom_config_file).read
     else
       puts "WARNING: Graylog2 config not found. Using default configuration options. Please run `rake graylog2_rails:install'"

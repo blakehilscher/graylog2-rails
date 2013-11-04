@@ -35,8 +35,6 @@ module Graylog2Rails
           :line => err.backtrace[0].split(":")[1],
         }
 
-        Rails.logger.info "[GRAYLOG] [#{Time.now.utc.to_datetime}] #{args.inspect}"
-
         unless Rails.env.development? || Rails.env.test?
           notifier = GELF::Notifier.new(Graylog2Rails.configuration['hostname'], Graylog2Rails.configuration['port'], Graylog2Rails.configuration['max_chunk_size'])
           notifier.notify!(args)

@@ -17,8 +17,6 @@ module Graylog2Rails
       timestamp = Time.now.utc
       args.merge!({:timestamp => timestamp.to_f})
 
-      Rails.logger.info "[GRAYLOG] [#{timestamp.to_datetime}] #{args.inspect}"
-
       @notifier.gelf.notify! args unless Rails.env.development? || Rails.env.test?
     end
 
