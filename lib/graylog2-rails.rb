@@ -8,7 +8,7 @@ module Graylog2Rails
   
   def self.configuration
     # cached?
-    return @@configuration if @@configuration
+    return @@configuration if defined?(@@configuration)
     # read
     custom_config_file = Rails.root.join("config", "graylog2_rails.yml")
     if custom_config_file.exist?
