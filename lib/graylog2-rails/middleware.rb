@@ -28,9 +28,9 @@ module Graylog2Rails
         args = {
           :short_message => notice.message,
           :full_message => notice.to_s,
-          :facility => @args.delete("facility") + "_exception",
-          :level => @args.delete("level"),
-          :host => @args.delete("local_app_name"),
+          :facility => Graylog2Rails.configuration['facility'] + "_exception",
+          :level => Graylog2Rails.configuration['level'],
+          :host => Graylog2Rails.configuration['local_app_name'],
           :file => err.backtrace[0].split(":")[0],
           :line => err.backtrace[0].split(":")[1],
         }
@@ -38,7 +38,7 @@ module Graylog2Rails
         Rails.logger.info "[GRAYLOG] [#{Time.now.utc.to_datetime}] #{args.inspect}"
 
         unless Rails.env.development? || Rails.env.test?
-          notifier = GELF::Notifier.new(@args.delete("hostname"), @args.delete("port"), @args.delete("max_chunk_size"))
+          notifier = GELF::Notifier.new(Graylog2Rails.configuration['hostname'], Graylog2Rails.configuration['port'], Graylog2Rails.configuration['max_chunk_size'])
           notifier.notify!(args)
         end
       rescue => i_err

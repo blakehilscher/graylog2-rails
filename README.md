@@ -5,23 +5,22 @@ stack of rails application for exception logging to Graylog2.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Gemfile:
 
     gem "graylog2-rails", "~> 0.0.1"
 
-And then execute:
+Bundle:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install graylog2-rails
-
-It is highly recommended to customize Graylog2Rails config
+Generate config:
 
     $ rails g graylog2_rails:install
 
-It will copy default config file into `config/graylog2_rails.conf` file.
+Add middleware to application.rb:
+
+    config.middleware.use Graylog2Rails::Middleware
+
 
 
 ## Usage
