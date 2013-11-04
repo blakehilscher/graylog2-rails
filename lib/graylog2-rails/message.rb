@@ -130,10 +130,14 @@ module Graylog2Rails
       message << "=================== User information"
       message << args[:rack_env]['HTTP_USER_AGENT']
       message << args[:rack_env]['HTTP_ACCEPT_CHARSET']
-      message << "=================== Backtrace"
-      message << self.backtrace
-      message << "=================== ARGS"
-      message << self.args
+      if Graylog2Rails.configuration['message_backtrace'] == true
+        message << "=================== Backtrace"
+        message << self.backtrace
+      end
+      if Graylog2Rails.configuration['message_backtrace'] == true
+        message << "=================== ARGS"
+        message << self.args 
+      end
       message.join("\n\n")
     end
   end # Notice

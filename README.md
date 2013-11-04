@@ -5,43 +5,29 @@ stack of rails application for exception logging to Graylog2.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Gemfile:
 
-    gem "graylog2-rails", "~> 0.0.1"
+    gem "graylog2-rails", "~> 0.1.0", git: 'https://github.com/blakehilscher/graylog2-rails'
 
-And then execute:
+Bundle:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install graylog2-rails
-
-It is highly recommended to customize Graylog2Rails config
+Generate config:
 
     $ rails g graylog2_rails:install
-
-It will copy default config file into `config/graylog2_rails.conf` file.
 
 
 ## Usage
 
-If you want only to catch exception and you need do nothing. To check middleware stack run `bundle exec rake middleware` and you will see something like:
+Add middleware to application.rb:
 
 ```ruby
-use ActionDispatch::Flash
-use ActionDispatch::ParamsParser
-use ActionDispatch::Head
-use Graylog2Rails::Middleware <----
-use Rack::ConditionalGet
-use Rack::ETag
-use ActionDispatch::BestStandardsSupport
-use Warden::Manager
-use Bullet::Rack
-use Sass::Plugin::Rack
+config.middleware.use Graylog2Rails::Middleware
 ```
 
-You also may use Graylog2Rails for logging custom messages:
+
+You may use Graylog2Rails for logging custom messages:
 
 ```ruby
 Graylog2Rails::Notifier.notify!({
