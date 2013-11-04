@@ -1,3 +1,8 @@
+## 0.1.1
+
+* remove Rails.logger.info
+* add configuration specs
+
 ## 0.1.0
 
 * Refactor to prevent autoloading of graylog2-rails into middleware stack
