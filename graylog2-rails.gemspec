@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Graylog2Rails::VERSION
 
-  gem.add_dependency("gelf", "~> 1.3.2")
+  gem.add_dependency("gelf", "~> 1.4")
   gem.add_dependency("awesome_print")
   gem.add_dependency("activesupport")
   gem.add_dependency("rake")
